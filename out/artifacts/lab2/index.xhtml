@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:yr="http://yaruliy.com/facelets"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   <h:head>
+      <h:outputStylesheet library="styles" name="main-jsf.css"/>
+       <title>Main Page</title>
+   </h:head>
+   <h:body>
+       <h:panelGroup layout="block" id="div" styleClass="db-div">
+           <h:form>
+           <h:dataTable value="#{carService.getAllCars()}" var="car">
+               <h:column>
+                    <f:facet name="header">
+                       ID
+                    </f:facet>
+                    #{car.getId()}
+                </h:column>
+
+             <h:column>
+                <f:facet name="header">
+                   Company
+                </f:facet>
+                #{car.getCompany()}
+             </h:column>
+
+             <h:column>
+                <f:facet name="header">
+                   Model
+                </f:facet>
+                #{car.getModel()}
+             </h:column>
+
+             <h:column>
+                <f:facet name="header">
+                   Price
+                </f:facet>
+                #{car.getPrice()}
+             </h:column>
+
+                 <h:column>
+                     <h:commandButton value="e"
+                                      action="#{edit.setCar(car.getId(),car.getCompany(),car.getModel(),car.getPrice())}"
+                               />
+                 </h:column>
+      </h:dataTable>
+           </h:form>
+           <h:form>
+               <h:panelGroup layout="block">
+                   <h:outputLabel value="ID"/>
+                   <h:inputText name="id" binding="#{id}"/>
+                   <h:commandButton value="Delete"
+                                    styleClass="jsp"
+                                    action="#{carService.deleteCarByID(id.value)}"
+                   />
+               </h:panelGroup>
+           </h:form>
+           <h:button styleClass="jsp" value="Add" outcome="add"/>
+           <yr:yaruliy-text name="Lukyanenko Yaroslav" lab="4" variant="CarService"/>
+       </h:panelGroup>
+   </h:body>
+</html>

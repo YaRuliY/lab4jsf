@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="styles" name="edit-jsf.css"/>
+        <title>Add Page</title>
+    </h:head>
+<h:body>
+    <h:form>
+        <h:panelGroup layout="block" id="div" styleClass="db-div">
+            <h:outputLabel value="Company"/>
+            <h:inputText name="company" binding="#{company}"/>
+
+            <h:outputLabel value="Model"/>
+            <h:inputText name="model" binding="#{model}"/>
+
+            <h:outputLabel value="Price"/>
+            <h:inputText name="price" binding="#{price}"/>
+            <h:panelGrid column="1">
+                <h:commandButton value="Add"
+                                 styleClass="jsp"
+                                 action="#{carService.insertCar(id.value, company.value, model.value, price.value)}"
+                />
+
+                <h:button value="Main Page"
+                          styleClass="jsp"
+                          outcome="index"
+                />
+            </h:panelGrid>
+        </h:panelGroup>
+    </h:form>
+</h:body>
+</html>
