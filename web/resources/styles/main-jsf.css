@@ -127,6 +127,8 @@ form {
 
 label {
     display: block;
+    text-align:right;
+    color: darkred;
 }
 
 /*

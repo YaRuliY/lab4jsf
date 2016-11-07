@@ -12,7 +12,7 @@
     <div>
         <form name="edit" action="http://localhost:8080/edit" method="get">
             <input type="number" placeholder="Company" name="id" value="<%=request.getParameter("id")%>" readonly="readonly"><br>
-            <input type="text" placeholder="Company" name="company" value="<%=request.getParameter("company")%>"><br>
+            <input type="text" placeholder="Company" name="companyName" value="<%=request.getParameter("companyName")%>"><br>
             <input type="text" placeholder="Model" name="model" value="<%=request.getParameter("model")%>"><br>
             <input type="number" placeholder="Price" name="price" value="<%=request.getParameter("price")%>"><br>
             <input class="jsp" type="submit" value="Save">

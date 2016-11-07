@@ -23,13 +23,6 @@
 
              <h:column>
                 <f:facet name="header">
-                   Company
-                </f:facet>
-                #{car.getCompany()}
-             </h:column>
-
-             <h:column>
-                <f:facet name="header">
                    Model
                 </f:facet>
                 #{car.getModel()}
@@ -42,16 +35,40 @@
                 #{car.getPrice()}
              </h:column>
 
+               <h:column>
+                   <f:facet name="header">
+                       Company
+                   </f:facet>
+                   #{car.getCompany().getName()}
+               </h:column>
+
+               <h:column>
+                   <f:facet name="header">
+                       Owner
+                   </f:facet>
+                   #{car.getOwner().getOwner()}
+               </h:column>
+
+               <h:column>
+                   <f:facet name="header">
+                       Services
+                   </f:facet>
+                   #{car.getAllServicesAsText()}
+               </h:column>
+
                  <h:column>
                      <h:commandButton value="e"
-                                      action="#{edit.setCar(car.getId(),car.getCompany(),car.getModel(),car.getPrice())}"
+                                      action="#{edit.setCar(
+                                                car.getId(),
+                                                car.getModel(),
+                                                car.getPrice(),
+                                                car.getCompany().getId())}"
                                />
                  </h:column>
       </h:dataTable>
            </h:form>
            <h:form>
                <h:panelGroup layout="block">
-                   <h:outputLabel value="ID"/>
                    <h:inputText name="id" binding="#{id}"/>
                    <h:commandButton value="Delete"
                                     styleClass="jsp"
@@ -60,7 +77,7 @@
                </h:panelGroup>
            </h:form>
            <h:button styleClass="jsp" value="Add" outcome="add"/>
-           <yr:yaruliy-text name="Lukyanenko Yaroslav" lab="4" variant="CarService"/>
        </h:panelGroup>
+       <yr:yaruliy-text name="Lukyanenko Yaroslav" lab="4" variant="Cars Database"/>
    </h:body>
 </html>

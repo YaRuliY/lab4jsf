@@ -10,25 +10,30 @@
     <title>Edit Page</title>
 </h:head>
 <h:body>
-    <h:form>
         <h:panelGroup layout="block" id="div" styleClass="db-div">
             <h:outputLabel value="Company"/>
-            <h:inputText name="company" binding="#{company}" value="#{edit.company}" required="true"/>
 
-            <h:outputLabel value="Model"/>
-            <h:inputText name="model" binding="#{model}" value="#{edit.model}"/>
+            <h:selectOneMenu>
+                <f:selectItems value="#{companyService.getAllCompanys()}"
+                               var="c"
+                               itemLabel="#{c.getName()}"/>
+            </h:selectOneMenu>
 
-            <h:outputLabel value="Price"/>
-            <h:inputText name="price" binding="#{price}" value="#{edit.price}"/>
+            <h:form>
+                <h:outputLabel value="Model"/>
+                <h:inputText name="model" binding="#{model}" value="#{edit.model}"/>
 
-            <h:commandButton action="#{edit.update()}"
-                             value="Update"/>
+                <h:outputLabel value="Price"/>
+                <h:inputText name="price" binding="#{price}" value="#{edit.price}"/>
 
-            <h:button value="Main Page"
-                      styleClass="jsp"
-                      outcome="index"
-            />
+                <h:commandButton action="#{edit.update()}"
+                                 value="Update"/>
+
+                <h:button value="Main Page"
+                          styleClass="jsp"
+                          outcome="index"
+                />
+            </h:form>
         </h:panelGroup>
-    </h:form>
 </h:body>
 </html>

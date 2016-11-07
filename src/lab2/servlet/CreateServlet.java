@@ -17,7 +17,6 @@ public class CreateServlet extends HttpServlet {
         CarService cs = new CarService();
         try {
             cs.insertCar(new Car(0,
-                    req.getParameter("company"),
                     req.getParameter("model"),
                     Integer.parseInt(req.getParameter("price"))));
             logger.info("Successful Insert");

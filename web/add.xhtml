@@ -10,28 +10,53 @@
         <title>Add Page</title>
     </h:head>
 <h:body>
-    <h:form>
         <h:panelGroup layout="block" id="div" styleClass="db-div">
-            <h:outputLabel value="Company"/>
-            <h:inputText name="company" binding="#{company}"/>
+            <h:form>
+                <h:outputLabel value="Model"/>
+                <h:inputText name="model" binding="#{model}"/>
 
-            <h:outputLabel value="Model"/>
-            <h:inputText name="model" binding="#{model}"/>
+                <h:outputLabel value="Price"/>
+                <h:inputText name="price" binding="#{price}"/>
 
-            <h:outputLabel value="Price"/>
-            <h:inputText name="price" binding="#{price}"/>
-            <h:panelGrid column="1">
-                <h:commandButton value="Add"
-                                 styleClass="jsp"
-                                 action="#{carService.insertCar(id.value, company.value, model.value, price.value)}"
-                />
+                <h:outputLabel value="Company ID"/>
+                <h:inputText name="company_id" binding="#{company_id}"/>
+                <h:panelGrid column="1">
+                    <h:commandButton value="Add"
+                                     styleClass="jsp"
+                                     action="#{carService.insertCar(id.value, model.value, price.value, company_id.value)}"
+                    />
 
-                <h:button value="Main Page"
-                          styleClass="jsp"
-                          outcome="index"
-                />
-            </h:panelGrid>
+                    <h:button value="Main Page"
+                              styleClass="jsp"
+                              outcome="index"
+                    />
+                </h:panelGrid>
+            </h:form>
+
+            <h:form>
+                <h:dataTable value="#{companyService.getAllCompanys()}" var="com">
+                    <h:column>
+                        <f:facet name="header">
+                            ID
+                        </f:facet>
+                        #{com.getId()}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            Name
+                        </f:facet>
+                        #{com.getName()}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            Country
+                        </f:facet>
+                        #{com.getCountry()}
+                    </h:column>
+                </h:dataTable>
+            </h:form>
         </h:panelGroup>
-    </h:form>
 </h:body>
 </html>
